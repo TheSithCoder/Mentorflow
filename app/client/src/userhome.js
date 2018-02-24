@@ -73,7 +73,7 @@ class UserHome extends Component{
     render(){
         return (
             <div>
-                <div>
+                <div style={{"border-style":"none none solid none", "border-width":"1px"}}>
                     <table style={{"width":"100%"}}>
                         <tbody>
                             <tr>
@@ -94,39 +94,40 @@ class UserHome extends Component{
                         </tbody>
                     </table>
                 </div>
-                <div style={{"border-style":"none none solid none", "border-width":"1px", "width":"100%"}} />
                 <div style={{"margin":"8px"}}>
-                    <h2>Requests for guidance</h2>
-                    <div style={{"margin":"8px"}}>
-                    {
-                        this.state.requests.map(request => (request.mentee == this.state.username ? (
-                            <div style={{"width":"90%","background-color":"#ddd","padding":"6px 0px 1px 12px","margin-bottom":"8px"}}>
-                                <div>
-                                    <a style={{"font-size":"150%"}} href={'/requests/' + request._id}>{request.title}</a>
+                    <div>
+                        <h2>Requests for guidance</h2>
+                        <div style={{"margin":"8px"}}>
+                        {
+                            this.state.requests.map(request => (request.mentee == this.state.username ? (
+                                <div style={{"width":"90%","background-color":"#ddd","padding":"6px 0px 1px 12px","margin-bottom":"8px"}}>
+                                    <div>
+                                        <a style={{"font-size":"150%"}} href={'/requests/' + request._id}>{request.title}</a>
+                                    </div>
+                                    <div>
+                                        <p>{request.requestBody}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p>{request.requestBody}</p>
-                                </div>
-                            </div>
-                        ): null))
-                    }
+                            ): null))
+                        }
+                        </div>
                     </div>
-                </div>
-                <div style={{"margin":"8px"}}>
-                    <h2>Mentoring Chats</h2>
-                    <div style={{"margin":"8px"}}>
-                    {
-                        this.state.requests.map(request => (request.mentor == this.state.username ? (
-                            <div style={{"width":"90%","background-color":"#ddd","padding":"6px 0px 1px 12px","margin-bottom":"8px"}}>
-                                <div>
-                                    <a style={{"font-size":"150%"}} href={'/requests/' + request._id}>{request.title}</a>
+                    <div>
+                        <h2>Mentoring Chats</h2>
+                        <div style={{"margin":"8px"}}>
+                        {
+                            this.state.requests.map(request => (request.mentor == this.state.username ? (
+                                <div style={{"width":"90%","background-color":"#ddd","padding":"6px 0px 1px 12px","margin-bottom":"8px"}}>
+                                    <div>
+                                        <a style={{"font-size":"150%"}} href={'/requests/' + request._id}>{request.title}</a>
+                                    </div>
+                                    <div>
+                                        <p>{request.requestBody}</p>
+                                    </div>
                                 </div>
-                                <div>
-                                    <p>{request.requestBody}</p>
-                                </div>
-                            </div>
-                        ) : null))
-                    }
+                            ) : null))
+                        }
+                        </div>
                     </div>
                 </div>
                 <Modal isOpen={this.state.showNewRequest}>
