@@ -12,8 +12,10 @@ class SignIn extends Component{
         return(
             <div>
                 <h1>Sign in</h1>
-                <p>Sign in to your user</p>
+                <p>Sign in to your user</p><br />
+                <p>Username: </p>
                 <input type="text" value=""></input>
+                <input type="button" value="Enter"></input>
             </div>
         )
     }
