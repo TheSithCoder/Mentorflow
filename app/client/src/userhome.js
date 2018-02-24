@@ -85,7 +85,7 @@ class UserHome extends Component{
                                     <input type="button" value="Create Request" onClick={this.openModal}/>
                                 </td>
                                 <td class="buttonspace">
-                                    <input type="button" value="See all requests" onClick={function(){}} />
+                                    <a href="/requests"><input type="button" value="See all requests" onClick={function(){}} /></a>
                                 </td>
                                 <td style={{"width":"34%"}}>
                                     <h3 style={{"text-align":"right"}}>{this.state.username}</h3>
