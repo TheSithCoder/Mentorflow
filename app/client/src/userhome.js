@@ -77,13 +77,17 @@ class UserHome extends Component{
                     <table style={{"width":"100%"}}>
                         <tbody>
                             <tr>
-                                <td>
+                                <style>
+                                    {".buttonspace { width: 33%; padding: 0px 80px; border-style: none solid none none; border-width: 1px; border-color: #000; }"}
+                                    {".buttonspace input { height: 48px; width: 128px; }"}
+                                </style>
+                                <td class="buttonspace">
                                     <input type="button" value="Create Request" onClick={this.openModal}/>
                                 </td>
-                                <td>
+                                <td class="buttonspace">
                                     <input type="button" value="See all requests" onClick={function(){}} />
                                 </td>
-                                <td>
+                                <td style={{"width":"34%"}}>
                                     <h3 style={{"text-align":"right"}}>{this.state.username}</h3>
                                 </td>
                             </tr>
@@ -92,18 +96,40 @@ class UserHome extends Component{
                 </div>
                 <div style={{"border-style":"none none solid none", "border-width":"1px", "width":"100%"}} />
                 
-                <h2>Requests for guidance</h2>
-                <ul>{
-                     this.state.requests.map(request => (request.mentee == this.state.username ?<li><a href={'/requests/' + request._id}>{request.title}</a></li> : null))
-                }
-                    
-                </ul>
-                <h2>Mentoring Chats</h2>
-                <ul>
-                {
-                     this.state.requests.map(request => (request.mentee !== this.state.username ?<li><a href={'/requests/' + request._id}>{request.title}</a></li> : null))
-                }
-                </ul>
+                <div style={{"margin":"8px"}}>
+                    <h2>Requests for guidance</h2>
+                    <div style={{"margin":"8px"}}>
+                    {
+                        this.state.requests.map(request => (request.mentee == this.state.username ? (
+                            <div style={{"width":"90%","background-color":"#ddd","padding":"6px 0px 1px 12px","margin-bottom":"8px"}}>
+                                <div>
+                                    <a style={{"font-size":"150%"}} href={'/requests/' + request._id}>{request.title}</a>
+                                </div>
+                                <div>
+                                    <p>{request.requestBody}</p>
+                                </div>
+                            </div>
+                        ): null))
+                    }
+                    </div>
+                </div>
+                <div style={{"margin":"8px"}}>
+                    <h2>Mentoring Chats</h2>
+                    <div style={{"margin":"8px"}}>
+                    {
+                        this.state.requests.map(request => (request.mentee !== this.state.username ? (
+                            <div style={{"width":"90%","background-color":"#ddd","padding":"6px 0px 1px 12px","margin-bottom":"8px"}}>
+                                <div>
+                                    <a style={{"font-size":"150%"}} href={'/requests/' + request._id}>{request.title}</a>
+                                </div>
+                                <div>
+                                    <p>{request.requestBody}</p>
+                                </div>
+                            </div>
+                        ) : null))
+                    }
+                    </div>
+                </div>
                 <Modal isOpen={this.state.showNewRequest}>
                     <table style={{"width":"100%"}}>
                         <tbody>
