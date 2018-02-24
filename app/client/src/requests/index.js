@@ -5,10 +5,11 @@ import {Link} from 'react-router-dom';
 
 class Request extends Component{
     render(){
-        <Switch>
+        return <p>Meme</p>
+        /*<Switch>
             <Route exact path='/request' render={}/>
             <Route path='/request/:id' render={}/>
-        </Switch>
+        </Switch>*/
     }
 }
 
