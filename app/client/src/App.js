@@ -26,7 +26,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.username);
     return (
       <Switch>
         {this.state.redirect}
@@ -34,7 +33,7 @@ class App extends Component {
         <Route path='/signup' render={(props) => <SignUp {...props} callback={this.setUsername}/>}/>
         <Route path='/signin' render={(props) => <SignIn {...props} callback={this.setUsername}/>}/>
     <Route path='/userhome' render={(props) => ((this.state.username =="")? <UserHome {...props} username={this.state.username} /> : <Redirect path="/userhome"/> )}/>
-        <Route path='/request' render={(props) => (this.state.username == "") ? <Request {...props} username={this.state.username}/> : <Redirect path="/userhome"/>}/>
+    <Route path='/requests' render={(props) => <Request {...props} username={this.state.username}/>}/>
       </Switch>
     );
   }

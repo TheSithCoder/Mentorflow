@@ -10,20 +10,29 @@ class Request extends Component{
     }
 
     render(){
-        if(this.props.inList){
+        var inList = this.props.inList;
+        var title = this.props.request.title;
+        var id = this.props.request._id;
+        if(inList){
             return(
                 <li>
-                    <h3>{this.props.title}</h3><br/>
-                    <Link to={"/request/" + this.props._id}>Go to request</Link>
+                    <h3>{title}</h3><br/>
+                    <Link to={"/requests/" + id}>Go to request</Link>
                 </li>
             );
         }else{
+                console.log(this.props);
+                var title = this.props.request.title;
+                var mentee = this.props.request.mentee;
+                var requestBody = this.props.requestBody;
+                var id = this.props.request._id;
+                var callback = this.props.callback;
             return(
                 <div>
-                    <h1>{this.props.title}</h1><br/>
-                    <h3>Asked by {this.props.mentee}</h3><br/>
-                    <p>{this.props.requestText}</p>
-                    <input type="button" onClick={this.props.callback}>Take Request</input>
+                    <h1>{title}</h1><br/>
+                    <h3>Asked by {title}</h3><br/>
+                    <p>{requestBody}</p>
+                    <button onClick={() => callback(id)}>Take Request</button>
                 </div>
             )
         }

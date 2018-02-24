@@ -101,7 +101,7 @@ class UserHome extends Component{
                 <h2>Mentoring Chats</h2>
                 <ul>
                 {
-                     this.state.requests.map(request => (request.mentee !== this.state.username ?<li><a href={'/requests/' + request._id}>{request.title}</a></li> : null))
+                     this.state.requests.map(request => (request.mentor == this.state.username ?<li><a href={'/requests/' + request._id}>{request.title}</a></li> : null))
                 }
                 </ul>
                 <Modal isOpen={this.state.showNewRequest}>
