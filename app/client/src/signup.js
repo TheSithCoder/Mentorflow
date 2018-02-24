@@ -20,12 +20,16 @@ class SignUp extends Component{
     handleSubmit(event){
         event.preventDefault();
         var theUsername = this.state.username;
-        var callback = this.state.callback;
+        var callback = this.props.callback;
         axios.get('/api/users/' + theUsername).then(function(response){
-            if(response.data.free == false){
-                callback(theUsername)
+            if(response.data.free == true){
+                axios.post('/api/users/', {username:theUsername}).then(function(response){
+                    console.log(callback);
+                    callback(theUsername);
+                    return true;
+                })
             }else{
-                alert('Username does not exist');
+                alert('Username already used');
             }
         })
     }
@@ -34,8 +38,8 @@ class SignUp extends Component{
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                <h1>Sign In</h1>
-                <p>Sign in with existing user</p><br />
+                <h1>Sign Up</h1>
+                <p>Sign up with a new user</p><br />
                 <p>Username: </p>
                 <input type="text" value={this.state.username}  onChange={this.handleChange}></input>
                 <input type="submit" value="Enter"></input>

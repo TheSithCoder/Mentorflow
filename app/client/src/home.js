@@ -8,9 +8,10 @@ class Home extends Component{
         return (
             <div>
                 <h1>Home Page</h1>
-                <Link to='/signin'>SignIn</Link>
+                <Link to='/signup'>Sign Up</Link>
                 <br />
-                <a href="./requests">Requests</a>
+                <Link to="/signin">Sign In</Link>
+                <br/>
             </div>
         );
     }
