@@ -6,7 +6,10 @@ class Home extends Component{
     render(){
         return (
             <div>
-                The Home Page
+                <h1>Home Page</h1>
+                <a href="./signin">Sign in</a>
+                <br />
+                <a href="./requests">Requests</a>
             </div>
         );
     }
