@@ -45,8 +45,9 @@ class Chat extends Component{
 
     handleSubmit(e){
         e.preventDefault();
+        var theComponent = this;
         axios.post('/api/requests/chat/' + this.state.id, {username:this.state.username,chatText:this.state.text}).then(function(response){
-            this.getChat();
+            theComponent.getChat();
         })
     }
 
