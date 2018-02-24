@@ -4,6 +4,7 @@ import {Route} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import Request from './request.js';
 import {withCookies,Cookies} from 'react-cookie';
+import Chat from './chat.js';
 var axios = require('axios');
 
 class SingleRequest extends Component{
@@ -44,7 +45,7 @@ class SingleRequest extends Component{
         if(!this.state.request.isTaken){
             return <Request request={this.state.request} callback={this.takeRequest}/>
         }else{
-
+            return <Chat request={this.state.request}/>
         }
     }
 }
