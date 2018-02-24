@@ -2,9 +2,24 @@ import React, { Component } from 'react';
 import {Switch} from 'react-router-dom';
 import {Route} from 'react-router-dom';
 import {Link} from 'react-router-dom';
+import {withCookies,Cookies} from 'react-cookie';
 var axios = require('axios');
 
 class UserHome extends Component{
+
+    constructor(props){
+        super(props);
+        const{cookies} = this.props;
+        this.state = {
+            username : cookies.get('username')
+        }
+    }
+
+    componentDidMount(){
+        const {cookies} = this.props;
+        console.log(cookies.get('username'));
+    }
+
     render(){
         return (
             <div>
@@ -19,7 +34,7 @@ class UserHome extends Component{
                                     <input type="button" value="See all requests" onClick={function(){}} />
                                 </td>
                                 <td>
-                                    <h3 style={{"text-align":"right"}}>username</h3>
+                                    <h3 style={{"text-align":"right"}}>{this.state.username}</h3>
                                 </td>
                             </tr>
                         </tbody>
@@ -40,4 +55,4 @@ class UserHome extends Component{
     }
 }
 
-export default UserHome;
+export default withCookies(UserHome);

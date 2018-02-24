@@ -20,10 +20,11 @@ class SignUp extends Component{
     handleSubmit(event){
         event.preventDefault();
         var theUsername = this.state.username;
-        var callback = this.state.callback;
+        var callback = this.props.callback;
         axios.get('/api/users/' + theUsername).then(function(response){
+            console.log(response.data.free);
             if(response.data.free == false){
-                callback(theUsername)
+                callback(theUsername);
             }else{
                 alert('Username does not exist');
             }
