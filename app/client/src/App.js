@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import {Switch,Route} from 'react-router-dom';
 import Home from './home.js';
+import SignIn from './signin.js';
 class App extends Component {
   constructor(props){
     super(props);
@@ -22,6 +23,7 @@ class App extends Component {
     return (
       <Switch>
         <Route exact path='/' component={Home}/>
+        <Route path='/signin' component={SignIn}
       </Switch>
     );
   }
