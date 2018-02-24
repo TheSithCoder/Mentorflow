@@ -23,6 +23,8 @@ class UserHome extends Component{
                         </tr>
                     </table>
                 </div>
+                <div style={{"border-style":"none none solid none", "border-width":"1px", "width":"100%"}} />
+                
                 <h2>Pending requests for guidance</h2>
                 <ul>
                     
