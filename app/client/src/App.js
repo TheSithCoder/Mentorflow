@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import {Switch,Route} from 'react-router-dom';
+import Home from './home.js';
 class App extends Component {
-
   constructor(props){
     super(props);
     this.state = {
@@ -12,19 +12,17 @@ class App extends Component {
   }
 
   componentDidMount(){
-    fetch('/users')
+    /*fetch('/users')
       .then(res => res.json())
       .then(users => this.setState({users}));
+      */
   }
 
   render() {
     return (
-      <div className="App">
-        <h1>Users</h1>
-        {this.state.users.map(user =>
-        <div key={user.id}>{user.username}</div>)
-        }
-      </div>
+      <Switch>
+        <Route exact path='/' component={Home}/>
+      </Switch>
     );
   }
 }
