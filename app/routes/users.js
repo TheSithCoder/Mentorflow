@@ -7,7 +7,8 @@ var User = require('../model/users.js');
 
 router.get('/:username', function(req, res, next) {
     var testUsername = req.params.username;
-    User.find({username: testUsername}, function(err, user){
+    User.findOne({username: testUsername}, function(err, user){
+        console.log(user);
         if(user == null){
             res.json({
                 free: true
