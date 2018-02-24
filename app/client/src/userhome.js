@@ -105,12 +105,43 @@ class UserHome extends Component{
                 }
                 </ul>
                 <Modal isOpen={this.state.showNewRequest}>
-                    <form onSubmit={this.onSubmit}>
-                        <button onClick={this.closeModal}> Close</button><br/>
-                        <label>Title<input type="text" onChange={this.handleTitleChange} value={this.state.title}/></label><br/>
-                        <label>Topic to learn<input type="text" onChange={this.handleRequestChange} value={this.state.requestText}/> </label><br/>
-                        <input type="submit" value="Request a mentor"/>
-                    </form>
+                    <table style={{"width":"100%"}}>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h1>Request a topic</h1>
+                                    <form onSubmit={this.onSubmit}>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td style={{"height":"3em"}}>Title:</td>
+                                                    <td>
+                                                        <input type="text" onChange={this.handleTitleChange} value={this.state.title}/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style={{"height":"3em"}}>Topic:</td>
+                                                    <td>
+                                                        <input type="text" onChange={this.handleRequestChange} value={this.state.requestText}/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style={{"height":"3em"}} colspan="2">
+                                                        <input type="submit" value="Request a mentor"/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </td>
+                                <td>
+                                    <div style={{"float":"right"}}>
+                                        <button onClick={this.closeModal}> Close</button><br/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </Modal>
             </div>
         );
