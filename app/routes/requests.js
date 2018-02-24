@@ -2,11 +2,11 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://dbuser:dbpass@ds247178.mlab.com:47178/mahacks');
-var Request = require('../model/requests.js');
+var Requests = require('../model/requests.js');
 
 //get all non taken requests when requesting /requests/
 router.get('/', function(req, res, next){
-    Requests.find({'isTaken':false}, function(requests){
+    Requests.find({'isTaken':false}, function(err,requests){
         res.json(requests);
     })
 });
@@ -14,33 +14,78 @@ router.get('/', function(req, res, next){
 //get a specific request
 router.get('/:id', function(req,res,next){
     var theId = req.params.id;
-    Requests.findOne({'_id': theId }, function(response){
+    Requests.findById(theId, function(err, response){
         res.json(response);
-    })
+    });
 })
 
 //get all of your requests
 router.get('/mine/:username', function(req,res,next){
-    Requests.find({$or:[{},{}]})
-})
+    theUsername = req.params.username;
+    Requests.find({$or:[{'mentor':theUsername},{'mentee':theUsername}]},function(err, requests){
+        res.json(requests);
+    });
+});
 
 //create a request
 router.post('/new', function(req,res,next){
-    
+    var request = new Request();
+    request.mentee = req.body.username;
+    request.requestBody = req.body.requestBody;
+    request.isTaken = false;
+    request.title = req.body.title;
+    request.mentor = "";
+    request.chat = [];
+    request.save(function(err){
+        if(err) {res.send(err);}
+        res.json({message:"Added request"});
+    })
 })
 
 //take a request
 router.get('/take/:request/:username', function(req,res,next){
-
+    Requests.findByIdAndUpdate(
+        req.params.request,
+        {$set: {'isTaken':true, 'mentor':req.params.username}},
+        {safe:true},
+        function(err,request){
+            if(err){
+                res.json({error: err});
+            }else{
+                res.json({message: "success"})
+            }
+        }
+    )
 })
 
 //get chat of a request
 router.get('/chat/:id',function(req,res,next){
-
+    Requests.findById(
+        req.params.id,
+        function(err, response){
+            res.json(response.chat);
+        }
+    );
 })
 //post a new message in a chat
 router.post('/chat/:id', function(req,res,next){
-
+    var theId = req.params.id;
+    var theUsername = req.body.username;
+    var theChatText = req.body.chatText;
+    var theChat = {
+        'author': theUsername,
+        'chatText': theChatText
+    }
+    Requests.findById(
+        theId,
+        function(err,request){
+            request.chat = [...request.chat, theChat];
+            request.save(function(err,updated){
+                if(err) res.send(err);
+                else res.json(updated);
+            })
+        }
+    )
 })
 
-export default router;
+module.exports= router;

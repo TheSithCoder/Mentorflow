@@ -3,15 +3,16 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var Requests = new Schema({
+var RequestsSchema = new Schema({
     mentee: String,
     requestBody: String,
     isTaken: Boolean,
     mentor:String,
+    title:String,
     chat:[{
         author:String,
-        responseText: String
+        chatText: String
     }],
 });
 
-module.exports = mongoose.model('Comment', CommentsSchema);
+module.exports = mongoose.model('Requests', RequestsSchema);
