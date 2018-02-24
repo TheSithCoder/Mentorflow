@@ -10,17 +10,19 @@ class UserHome extends Component{
             <div>
                 <div>
                     <table style={{"width":"100%"}}>
-                        <tr>
-                            <td>
-                                <input type="button" value="Create Request" onClick=""></input>
-                            </td>
-                            <td>
-                                <input type="button" value="See all requests" onClick=""></input>
-                            </td>
-                            <td>
-                                <h3 style={{"text-align":"right"}}>username</h3>
-                            </td>
-                        </tr>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="button" value="Create Request" onClick={function(){}} />
+                                </td>
+                                <td>
+                                    <input type="button" value="See all requests" onClick={function(){}} />
+                                </td>
+                                <td>
+                                    <h3 style={{"text-align":"right"}}>username</h3>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
                 <div style={{"border-style":"none none solid none", "border-width":"1px", "width":"100%"}} />
