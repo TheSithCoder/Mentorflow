@@ -77,13 +77,17 @@ class UserHome extends Component{
                     <table style={{"width":"100%"}}>
                         <tbody>
                             <tr>
-                                <td>
+                                <style>
+                                    {".buttonspace { width: 33%; padding: 0px 80px; border-style: none solid none none; border-width: 1px; border-color: #000; }"}
+                                    {".buttonspace input { height: 48px; width: 128px; }"}
+                                </style>
+                                <td class="buttonspace">
                                     <input type="button" value="Create Request" onClick={this.openModal}/>
                                 </td>
-                                <td>
+                                <td class="buttonspace">
                                     <input type="button" value="See all requests" onClick={function(){}} />
                                 </td>
-                                <td>
+                                <td style={{"width":"34%"}}>
                                     <h3 style={{"text-align":"right"}}>{this.state.username}</h3>
                                 </td>
                             </tr>
@@ -91,26 +95,78 @@ class UserHome extends Component{
                     </table>
                 </div>
                 <div style={{"border-style":"none none solid none", "border-width":"1px", "width":"100%"}} />
-                
-                <h2>Requests for guidance</h2>
-                <ul>{
-                     this.state.requests.map(request => (request.mentee == this.state.username ?<li><a href={'/requests/' + request._id}>{request.title}</a></li> : null))
-                }
-                    
-                </ul>
-                <h2>Mentoring Chats</h2>
-                <ul>
-                {
-                     this.state.requests.map(request => (request.mentor == this.state.username ?<li><a href={'/requests/' + request._id}>{request.title}</a></li> : null))
-                }
-                </ul>
+                <div style={{"margin":"8px"}}>
+                    <h2>Requests for guidance</h2>
+                    <div style={{"margin":"8px"}}>
+                    {
+                        this.state.requests.map(request => (request.mentee == this.state.username ? (
+                            <div style={{"width":"90%","background-color":"#ddd","padding":"6px 0px 1px 12px","margin-bottom":"8px"}}>
+                                <div>
+                                    <a style={{"font-size":"150%"}} href={'/requests/' + request._id}>{request.title}</a>
+                                </div>
+                                <div>
+                                    <p>{request.requestBody}</p>
+                                </div>
+                            </div>
+                        ): null))
+                    }
+                    </div>
+                </div>
+                <div style={{"margin":"8px"}}>
+                    <h2>Mentoring Chats</h2>
+                    <div style={{"margin":"8px"}}>
+                    {
+                        this.state.requests.map(request => (request.mentor == this.state.username ? (
+                            <div style={{"width":"90%","background-color":"#ddd","padding":"6px 0px 1px 12px","margin-bottom":"8px"}}>
+                                <div>
+                                    <a style={{"font-size":"150%"}} href={'/requests/' + request._id}>{request.title}</a>
+                                </div>
+                                <div>
+                                    <p>{request.requestBody}</p>
+                                </div>
+                            </div>
+                        ) : null))
+                    }
+                    </div>
+                </div>
                 <Modal isOpen={this.state.showNewRequest}>
-                    <form onSubmit={this.onSubmit}>
-                        <button onClick={this.closeModal}> Close</button><br/>
-                        <label>Title<input type="text" onChange={this.handleTitleChange} value={this.state.title}/></label><br/>
-                        <label>Topic to learn<input type="text" onChange={this.handleRequestChange} value={this.state.requestText}/> </label><br/>
-                        <input type="submit" value="Request a mentor"/>
-                    </form>
+                    <table style={{"width":"100%"}}>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h1>Request a topic</h1>
+                                    <form onSubmit={this.onSubmit}>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <td style={{"height":"3em"}}>Title:</td>
+                                                    <td>
+                                                        <input type="text" onChange={this.handleTitleChange} value={this.state.title}/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style={{"height":"3em"}}>Topic:</td>
+                                                    <td>
+                                                        <input type="text" onChange={this.handleRequestChange} value={this.state.requestText}/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style={{"height":"3em"}} colspan="2">
+                                                        <input type="submit" value="Request a mentor"/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </td>
+                                <td>
+                                    <div style={{"float":"right"}}>
+                                        <button onClick={this.closeModal}> Close</button><br/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </Modal>
             </div>
         );
