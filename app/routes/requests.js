@@ -29,7 +29,7 @@ router.get('/mine/:username', function(req,res,next){
 
 //create a request
 router.post('/new', function(req,res,next){
-    var request = new Request();
+    var request = new Requests();
     request.mentee = req.body.username;
     request.requestBody = req.body.requestBody;
     request.isTaken = false;
