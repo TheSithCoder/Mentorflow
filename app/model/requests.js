@@ -6,7 +6,9 @@ var Schema = mongoose.Schema;
 var Requests = new Schema({
     mentee: String,
     requestBody: String,
-    comments:[{
+    isTaken: Boolean,
+    mentor:String,
+    chat:[{
         author:String,
         responseText: String
     }],

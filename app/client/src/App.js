@@ -17,13 +17,6 @@ class App extends Component {
     this.setUsername = this.setUsername.bind(this);
   }
 
-  componentDidMount(){
-    /*fetch('/users')
-      .then(res => res.json())
-      .then(users => this.setState({users}));
-      */
-  }
-
   setUsername(uName){
     this.setState({username: uName});
     alert('Signed in as: ' + uName);
@@ -35,7 +28,8 @@ class App extends Component {
         <Route exact path='/' component={Home}/>
         <Route path='/signup' render={(props) => <SignUp {...props} callback={this.setUsername}/>}/>
         <Route path='/signin' render={(props) => <SignIn {...props} callback={this.setUsername}/>}/>
-        <Route path='/request' render={(props) => (<Request username={this.state.username} {...props}/>)}/>
+        <Route path='/userhome' render={(props) => <UserHome {...props} username={this.state.username}/>} />
+        <Route path='/request' render={(props) => <Request {...props} username={this.state.username}/>}/>
       </Switch>
     );
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Switch} from 'react-router-dom';
 import {Route} from 'react-router-dom';
 import {Link} from 'react-router-dom';
+import Request from './request.js';
 
 class ListRequests extends Component{
     constructor(props){
@@ -14,9 +15,14 @@ class ListRequests extends Component{
     render(){
         return(
             <div>
-                {
-                    this.state.requests.map(request =>  )
-                }
+                Requests
+                <ul>
+                    {
+                      this.state.requests.map((theRequest) =>(
+                            <Request request={theRequest} inList={true}/>
+                        ))
+                    }
+                </ul>
             </div>
         );
     }
