@@ -11,7 +11,9 @@ class SignIn extends Component{
     render(){
         return(
             <div>
-                The signin page
+                <h1>Sign in</h1>
+                <p>Sign in to your user</p>
+                <input type="text" value=""></input>
             </div>
         )
     }
