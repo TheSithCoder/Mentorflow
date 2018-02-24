@@ -23,14 +23,21 @@ class ListRequests extends Component{
     render(){
         return(
             <div>
-                Requests
-                <ul>
-                    {
-                      this.state.requests.map((theRequest) =>(
-                            <Request request={theRequest} inList={true}/>
-                        ))
-                    }
-                </ul>
+                <h2>Request</h2>
+                <div style={{"margin":"8px"}}>
+                {
+                    this.state.requests.map(request => (
+                        <div style={{"width":"90%","background-color":"#ddd","padding":"6px 0px 1px 12px","margin-bottom":"8px"}}>
+                            <div>
+                                <a style={{"font-size":"150%"}} href={'/requests/' + request._id}>{request.title}</a>
+                            </div>
+                            <div>
+                                <p>{request.requestBody}</p>
+                            </div>
+                        </div>
+                    ))
+                }
+                </div>
             </div>
         );
     }
