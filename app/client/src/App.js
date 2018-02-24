@@ -23,6 +23,7 @@ class App extends Component {
     this.setState({username: uName});
     const {cookies} = this.props;
     cookies.set('username', uName, {path:'/'});
+    window.location.href = "/userhome";
   }
 
   render() {
