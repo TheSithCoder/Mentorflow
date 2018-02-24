@@ -27,12 +27,14 @@ class Chat extends Component{
 
     componentDidMount(){
         this.getChat();
+        setInterval(this.getChat(), 1000);
     }
 
     getChat(){
+        var theComponent = this;
         axios.get('/api/requests/chat/'+ this.state.id).then(function(response){
-            this.setState({chat: response.data});
-            this.forceUpdate();
+            theComponent.setState({chat: response.data});
+            theComponent.forceUpdate();
         })
     }
 
