@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 class Home extends Component{
     render(){
         return (
-            <div style={{"margin":"8px"}}>
+            <div style={{"margin":"8px","width":"100%","height":"100%"}}>
                 <table>
                     <tbody>
                         <tr>
