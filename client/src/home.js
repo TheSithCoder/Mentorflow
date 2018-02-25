@@ -23,7 +23,7 @@ class Home extends Component{
                                 <br />
                                 <br />
                                 
-                                    <p style={{"font-size":"300%", "text-align":"center"}}>Home Page</p>
+                                    <p style={{"font-size":"300%", "text-align":"center"}}>Mentorflow</p>
                                 </div>
                             </td>
                         </tr>
