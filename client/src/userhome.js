@@ -23,6 +23,7 @@ class UserHome extends Component{
         this.onSubmit = this.onSubmit.bind(this);
         this.handleRequestChange = this.handleRequestChange.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
+        this.remove = this.remove.bind(this);
     }
 
     openModal(e){
@@ -59,6 +60,15 @@ class UserHome extends Component{
         axios.get('/api/requests/mine/'+this.state.username).then(function(response){
             theComponent.setState({requests: response.data});
             theComponent.forceUpdate();
+        })
+    }
+    remove(id){
+        var theComponent = this;
+        axios.get('/api/requests/delete/'+id).then(function(response){
+            axios.get('/api/requests/mine/'+theComponent.state.username).then(function(response){
+                theComponent.setState({requests: response.data});
+                theComponent.forceUpdate();
+            })
         })
     }
 
@@ -106,6 +116,7 @@ class UserHome extends Component{
                                     </div>
                                     <div>
                                         <p>{request.requestBody}</p>
+                                        <button onClick={() => this.remove(request._id)}>Delete</button>
                                     </div>
                                 </div>
                             ): null))

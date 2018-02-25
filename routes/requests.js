@@ -42,6 +42,16 @@ router.post('/new', function(req,res,next){
     })
 })
 
+//delete a request
+router.get('/delete/:id', function(req,res,next){
+    Requests.findByIdAndRemove(
+        req.params.id,
+        function(response){
+            res.json({messsage:"Success"})
+        }
+    )
+})
+
 //take a request
 router.get('/take/:request/:username', function(req,res,next){
     Requests.findByIdAndUpdate(
