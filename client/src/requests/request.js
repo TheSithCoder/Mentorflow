@@ -30,7 +30,7 @@ class Request extends Component{
             return(
                 <div>
                     <h1>{title}</h1><br/>
-                    <h3>Asked by {title}</h3><br/>
+                    <h3>Asked by {mentee}</h3><br/>
                     <p>{requestBody}</p>
                     <button onClick={() => callback(id)}>Take Request</button>
                 </div>
