@@ -22,8 +22,10 @@ class ListRequests extends Component{
 
     render(){
         return(
-            <div>
-                <h2>Request</h2>
+            <div style={{"margin":"8px"}}>
+                <div style={{"background-color":"#ccc","padding":"8px"}}>
+                    <h2 style={{"text-align":"center"}}>Requests</h2>
+                </div>
                 <div style={{"margin":"8px"}}>
                 {
                     this.state.requests.map(request => (
