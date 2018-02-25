@@ -36,8 +36,8 @@ class SingleRequest extends Component{
         var theComponent = this;
         axios.get('/api/requests/take/' + id + '/' + this.state.username).then(function(response){
             console.log(response.data);
-            this.setState({request:response.data});
-            this.forceUpdate();
+            theComponent.setState({request:response.data});
+            theComponent.forceUpdate();
         })
     }
 

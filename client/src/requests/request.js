@@ -28,11 +28,17 @@ class Request extends Component{
                 var id = this.props.request._id;
                 var callback = this.props.callback;
             return(
-                <div>
-                    <h1>{title}</h1><br/>
-                    <h3>Asked by {mentee}</h3><br/>
-                    <p>{requestBody}</p>
-                    <button onClick={() => callback(id)}>Take Request</button>
+                <div style={{"margin":"8px"}}>
+                    <div style={{"width":"100%", "background-color":"#ccc", "padding":"5px 10px", "margin-bottom":"8px"}}>
+                        <div>
+                            <h1 style={{"text-align":"center"}}>{title}</h1>
+                            <h3>Asked by {mentee}</h3>
+                        </div>
+                    </div>
+                    <div style={{"width":"100%", "background-color":"#ddd","padding":"8px 8px"}}>
+                        <p>{requestBody}</p>
+                        <button onClick={() => callback(id)}>Take Request</button>
+                    </div>
                 </div>
             )
         }
