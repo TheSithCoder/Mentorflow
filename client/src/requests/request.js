@@ -24,7 +24,7 @@ class Request extends Component{
                 console.log(this.props);
                 var title = this.props.request.title;
                 var mentee = this.props.request.mentee;
-                var requestBody = this.props.requestBody;
+                var requestBody = this.props.request.requestBody;
                 var id = this.props.request._id;
                 var callback = this.props.callback;
             return(
