@@ -25,6 +25,10 @@ class SingleRequest extends Component{
 
     componentDidMount(){
         var theComponent = this;
+        this.refreshData();
+    }
+
+    refreshData(){
         axios.get('/api/requests/' + this.state.id).then(function(response){
             theComponent.setState({request: response.data});
             theComponent.forceUpdate();
@@ -36,8 +40,7 @@ class SingleRequest extends Component{
         var theComponent = this;
         axios.get('/api/requests/take/' + id + '/' + this.state.username).then(function(response){
             console.log(response.data);
-            theComponent.setState({request:response.data});
-            theComponent.forceUpdate();
+            this.refreshData();
         })
     }
 
