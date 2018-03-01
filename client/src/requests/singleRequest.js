@@ -24,11 +24,11 @@ class SingleRequest extends Component{
     }
 
     componentDidMount(){
-        var theComponent = this;
         this.refreshData();
     }
 
     refreshData(){
+        var theComponent = this;
         axios.get('/api/requests/' + this.state.id).then(function(response){
             theComponent.setState({request: response.data});
             theComponent.forceUpdate();
