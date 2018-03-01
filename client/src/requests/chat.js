@@ -48,6 +48,7 @@ class Chat extends Component{
         var theComponent = this;
         axios.post('/api/requests/chat/' + this.state.id, {username:this.state.username,chatText:this.state.text}).then(function(response){
             theComponent.getChat();
+            this.setState({text:""});
         })
     }
 
