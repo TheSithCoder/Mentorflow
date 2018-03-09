@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var mongoose = require('mongoose');
-mongoose.connect('mongodb://dbuser:dbpass@ds247178.mlab.com:47178/mahacks');
+var mongoose = require('../bin/db.js');
 var Requests = require('../model/requests.js');
 
 //get all non taken requests when requesting /requests/
