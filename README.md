@@ -1,6 +1,6 @@
 # Mentorflow
 
-Have you ever asked a question on stack overflow, but then got downvoted to oblivion because you didn't understand the question you were really asking? This site will attempt to bridge taht gap, by pairing developers with mentors so that they can ask questions and get explanations until they understand.
+Have you ever asked a question on stack overflow, but then got downvoted to oblivion because you didn't understand the question you were really asking? This site will attempt to bridge that gap, by pairing developers with mentors so that they can chat and thoroughly discuss a topic until they understand.
 
 ## Preqreqs
 Install node package manager
